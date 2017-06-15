@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.json.simple.JSONArray;
 
-public class TimeTableService  {
+public class TimeTableService  { 
 
 	public TimeTable getTimeTable(String name){
 		
