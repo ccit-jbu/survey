@@ -47,3 +47,19 @@ function val(fieldName, index){
     return document.getElementsByName(fieldName)[index];
 }
 
+function convertArrayToJson(arr, actionName){
+	var rsltArr = [];
+	obj = {};    
+	for (var i=0; i < arr.length;i++){
+		var key = arr[i].name;
+		obj[key] = arr[i].value;
+		
+		if (key == actionName){
+			rsltArr.push(obj);
+			obj = {};
+		}
+		
+	}			
+	return rsltArr;
+
+}

@@ -1,5 +1,6 @@
 package com.qpick.survey.user;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,5 +25,33 @@ public class TimeTableService  {
 		}
 		
 		return timeTable;
+	}
+	
+	public List<Lecture> getResults(List<Lecture> lectures){
+		LectureDao lectureDao = new LectureDao();
+		List<Lecture> results = new ArrayList<Lecture>();
+		
+		for (Lecture lecture : lectures){
+			if ("SELECT".equalsIgnoreCase(lecture.getUpdateGu())){
+				List<Lecture> result = lectureDao.getLectures(lecture);
+				if (result != null){
+					results.addAll(result);
+				}
+			}
+			if ("INSERT".equalsIgnoreCase(lecture.getUpdateGu())){
+				lectureDao.insertLecture(lecture);
+				continue;
+			}			
+			if ("UPDATE".equalsIgnoreCase(lecture.getUpdateGu())){
+				lectureDao.updateLecture(lecture);
+				continue;
+			}			
+			if ("DELETE".equalsIgnoreCase(lecture.getUpdateGu())){
+				lectureDao.deleteLecture(lecture);
+				continue;
+			}			
+		}
+
+		return results;
 	}
 }

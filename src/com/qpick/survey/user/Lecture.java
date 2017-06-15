@@ -6,6 +6,8 @@ public class Lecture {
 	private Integer startTime = 0;
 	private Integer endTime = 0;
 	
+	private String updateGu = "NONE";
+	
 	public Lecture() { }
 	
 	public Lecture(String name, String weekDay, Integer startTime, Integer endTime) {
@@ -39,6 +41,16 @@ public class Lecture {
 	}
 	public void setEndTime(Integer endTime) {
 		this.endTime = endTime;
+	}
+
+	
+
+	public String getUpdateGu() {
+		return updateGu;
+	}
+
+	public void setUpdateGu(String updateGu) {
+		this.updateGu = updateGu;
 	}
       
       

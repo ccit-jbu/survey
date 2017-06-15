@@ -24,9 +24,6 @@ public class LectureDao extends BaseDao<Lecture> {
 							
 							int i = 1;
 							st.setString(i++, lecture.getName());
-							st.setString(i++, lecture.getWeekDay());
-							st.setInt   (i++, lecture.getStartTime());
-							st.setInt   (i++, lecture.getEndTime());	
 							
 						}		
 			}, 
@@ -94,7 +91,7 @@ public class LectureDao extends BaseDao<Lecture> {
     
     public void deleteLecture(List<Lecture> lectures){
     	
-    	String sql = "INSERT INTO LECTURE_TABLE (STUDENT, WEEK_DAY, START_TIME, END_TIME) VALUES (?, ?, ?, ?)";
+    	String sql = "DEKETE FROM  LECTURE_TABLE WHERE STUDENT = ?";
     	
 		update(sql, lectures, new StatementSetter(){
 			@Override
