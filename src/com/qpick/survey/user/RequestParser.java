@@ -14,7 +14,7 @@ public class RequestParser {
         StringBuilder stringBuilder = new StringBuilder();
         BufferedReader bufferedReader = null;
  // 
-        try {
+        try { 
             InputStream inputStream = request.getInputStream();
             if (inputStream != null) {
                 bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
