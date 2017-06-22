@@ -38,7 +38,7 @@ public class TimeTableController extends HttpServlet {
 		TimeTableService timeTableService = new TimeTableService();
 		TimeTable timeTable = timeTableService.getTimeTable(name);
 		
-		request.setAttribute("timeTable", timeTable);
+		request.setAttribute("timeTable", timeTable); 
 		
 //		response.sendRedirect("DisplayTimeTable.jsp");
 		RequestDispatcher view = request.getRequestDispatcher("DisplayTimeTable.jsp");
