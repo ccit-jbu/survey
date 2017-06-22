@@ -29,7 +29,8 @@
     <label><input type="radio" name="2_gender" value = "Male"> Male</label>
     <label><input type="radio" name="2_gender" value = "Female"> Female</label>
     <input type="hidden" name="gender"  value="">
-  
+
+ 
  <input type="hidden" name="updateGu"  value="SELECT"><br>
  <!-- NONE, SELECT, INSERT, UPDATE, DELETE -->
 </form>    
@@ -64,6 +65,9 @@ $(document).ready(function(){
             contentType: 'application/json; charset=utf-8',
             success: function(data) {
               ob = data;
+              alert(JSON.stringify(data));
+              
+              
             },
             error: function(jqXHR, textStatus, errorThrown) {
               console.log(jqXHR);

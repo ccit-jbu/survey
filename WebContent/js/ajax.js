@@ -63,3 +63,7 @@ function convertArrayToJson(arr, actionName){
 	return rsltArr;
 
 }
+
+function listUpRadioButtn(){
+	
+}
