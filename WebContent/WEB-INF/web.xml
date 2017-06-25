@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:web="http://xmlns.jcp.org/xml/ns/javaee">
-  <servlet>
-    <servlet-name>EvironmentLoader</servlet-name>
-    <servlet-class>com.qpick.survey.admin</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
   <resource-ref>
     <description>qpick db</description>
     <res-ref-name>jdbc/qpick</res-ref-name>

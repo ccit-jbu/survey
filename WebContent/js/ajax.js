@@ -48,10 +48,17 @@ function val(fieldName, index){
 }
 
 function convertArrayToJson(arr, actionName){
+	var optionNames = listUpRadioButtn();	
+	
 	var rsltArr = [];
 	obj = {};    
 	for (var i=0; i < arr.length;i++){
+		
 		var key = arr[i].name;
+		
+		// 옵션 아이템은 만들지 않는다.
+		if (key in optionNames) continue;
+		
 		obj[key] = arr[i].value;
 		
 		if (key == actionName){
@@ -65,5 +72,34 @@ function convertArrayToJson(arr, actionName){
 }
 
 function listUpRadioButtn(){
+	var optionNames = {};
 	
+	var tags = document.getElementsByTagName("input");
+	for (var i = 0; i < tags.length ; i++){
+		var tag = tags[i];
+		if (tag.type != "radio") continue;
+		optionNames[tag.name] = "";
+	}
+	
+	return optionNames;
+}
+
+function jsonToForm(jsonObject){
+	for (var id in jsonObject){
+		if ($("#" + id).length == 0) continue;
+		
+		var listObject = jsonObject[id];
+		var ndx = 0;
+		for (var i = 0; i < listObject.length; i++){
+			var obj = listObject[i];
+			
+			for (var fieldId in obj){
+				var jQueryElements = $("#" + id + " input[name='" + fieldId + "']");
+				if (ndx >= jQueryElements.length) break;
+				
+				jQueryElements[ndx].value = obj[fieldId];
+			}
+			ndx++;
+		}
+	}
 }

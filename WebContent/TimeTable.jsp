@@ -16,20 +16,20 @@
   요일: <input type="text" name="weekDay"      placeholder="(예: Mon)" value=""><br>
   시작시간: <input type="text" name="startTime" placeholder="(예: 9)" value=""><br>
   종료시간: <input type="text" name="endTime"   placeholder="(예: 18)" value=""><br>
-    <label><input type="radio" name="1_gender" value = "Male"> Male</label>
+<!--     <label><input type="radio" name="1_gender" value = "Male"> Male</label>
     <label><input type="radio" name="1_gender" value = "Female"> Female</label>
     <input type="hidden" name="gender"  value="">
-      
+ -->      
  <input type="hidden" name="updateGu"  value="INSERT"><br>
 
   성명: <input type="text" name="name"         placeholder="(예: 홍길동)" value=""><br>
   요일: <input type="text" name="weekDay"      placeholder="(예: Mon)" value=""><br>
   시작시간: <input type="text" name="startTime" placeholder="(예: 9)" value=""><br>
   종료시간: <input type="text" name="endTime"   placeholder="(예: 18)" value=""><br>
-    <label><input type="radio" name="2_gender" value = "Male"> Male</label>
+<!--     <label><input type="radio" name="2_gender" value = "Male"> Male</label>
     <label><input type="radio" name="2_gender" value = "Female"> Female</label>
     <input type="hidden" name="gender"  value="">
-
+ -->
  
  <input type="hidden" name="updateGu"  value="SELECT"><br>
  <!-- NONE, SELECT, INSERT, UPDATE, DELETE -->
@@ -54,8 +54,6 @@ $(document).ready(function(){
     		
         });
         var requesetParam = JSON.stringify(requestObject);
-    	
-        alert(requesetParam);
         
         $.ajax({
             type: 'post',
@@ -64,9 +62,12 @@ $(document).ready(function(){
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             success: function(data) {
-              ob = data;
               alert(JSON.stringify(data));
               
+              // 받은 형태 그대로 formid, input 필드가 있는 경우 
+              jsonToForm(data);
+              
+              // TODO: 이부분에 jquery를 사용해서 화면에 데이터를 채워야 함 
               
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -80,7 +81,7 @@ $(document).ready(function(){
 
     	if (!$(this).is(':checked')) return;
     	
-    	var val =$(this).val(); 
+    	var val = $(this).val(); 
     	var wArr = $(this).attr("name").split("_");
     	wArr.shift();
     	

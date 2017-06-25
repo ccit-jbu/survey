@@ -63,12 +63,15 @@ public class TimeTableController extends HttpServlet {
 		
 		// 서비스의 처리결과를 문자열로 바꾼다 
         //String jsonInString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(resultLectures);
-        String jsonInString = mapper.writeValueAsString(resultLectures);
+        String jsonLectures = mapper.writeValueAsString(resultLectures);
         
 		// JSON 문자열을 호출한 페이지로 리턴한다. 
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		out.println(jsonInString);
+		
+		out.println("{\"_message\": \"\"");
+		out.println(",\t\"lectures\": " + jsonLectures);
+		out.println("}");
         out.close();
         
 	}
